@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-lg-6">
+                <h:form>
+                    <p:panelGrid columns="1" layout="flex" columnClasses="p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4, p-col-12 p-md-3 p-xl-2, p-col-12 p-md-9 p-xl-4" 
+                                 contentStyleClass="ui-fluid">
+                        
+                        <p:inputText id="textB0" placeholder="Nombre de plantilla" value="#{templateDataController.templates.nombre}"/>
+                        <p:inputText id="textB1" placeholder="Asunto" value="#{templateDataController.templates.asunto}"/>
+
+                        <p:selectOneMenu id="selectOneB" 
+                                         value="#{templateDataController.templates.tipo}"
+                                         converter="javax.faces.Integer">
+                            <f:selectItem itemLabel="--Seleccionar tipo" itemValue="" noSelectionOption="true"/>
+                            <f:selectItem itemLabel="HTML" itemValue="1" />
+                            <f:selectItem itemLabel="text/plain" itemValue="2" />
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <pe:ckEditor id="editor" 
+                                 value="#{templateDataController.templates.cuerpo}"
+                                 width="100%"/>
+                    <p:commandButton value="Guardar" actionListener="#{templateDataController.registrar()}"/>
+                </h:form>
+            </div>
+
+        </div>
+    </h:body>
+</html>
+
